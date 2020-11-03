@@ -14,13 +14,17 @@ namespace IntegralLeft
         private int Nz = 0;//3
 
         //Пределы интегрирования
+        //1
         private double start_int1 = 0.00;
         private double end_int1 = 0.00;
+        //2
         private double start_int2 = 0.00;
         private double end_int2 = 0.00;
+        //3
         private double start_int3 = 0.00;
         private double end_int3 = 0.00;
 
+        //Строковое представление подинтегральной функции
         private string text_func;
 
         public SolutionIntegral()
@@ -56,23 +60,26 @@ namespace IntegralLeft
             double hz = (end_int3 - start_int3) / Nz;
 
             double temp_hx = start_int1;
-            for (int i = 0; i < Nx; i++)
+            for (int i = 0; i < Nx - 1; i++)
             {
                 double temp_hy = start_int2;
-                for (int j = 0; j < Ny; j++)
+                for (int j = 0; j < Ny - 1; j++)
                 {
                     double temp_hz = start_int3;
-                    for (int k = 0; k < Nz; k++)
+                    for (int k = 0; k < Nz - 1; k++)
                     {
                         var expr = calc.ParseExpression(text_func, x => temp_hx, y => temp_hy, z => temp_hz);
                         var func = expr.Compile();
                         result += func();
                         temp_hz += hz;
                     }
+                    result *= hz;
                     temp_hy += hy;
                 }
+                result *= hy;
                 temp_hx += hx;
             }
+            result *= hx;
 
             return result;
         }
