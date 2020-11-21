@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IntegralLeft
+﻿namespace IntegralLeft
 {
     class SolutionIntegral
     {
         //Число шагов для каждого интеграла
-        private int Nx = 0;//1
-        private int Ny = 0;//2
-        private int Nz = 0;//3
+        private double Nx = 0;//1
+        private double Ny = 0;//2
+        private double Nz = 0;//3
 
         //Пределы интегрирования
         //1
@@ -32,7 +26,7 @@ namespace IntegralLeft
 
         }
 
-        public SolutionIntegral(string text_func, int Ni, int Nj, int Nk, double s_i1, double e_i1, double s_i2, double e_i2, double s_i3, double e_i3)
+        public SolutionIntegral(string text_func, double Ni, double Nj, double Nk, double s_i1, double e_i1, double s_i2, double e_i2, double s_i3, double e_i3)
         {
             this.text_func = text_func;
             this.Nx = Ni;
@@ -50,9 +44,6 @@ namespace IntegralLeft
         {
             var calc = new Sprache.Calc.XtensibleCalculator();
 
-            //var expr = calc.ParseExpression("sin(y/x*z)", x => 1, y => 2, z => 3);
-            //var func = expr.Compile();
-
             double result = 0.00;
 
             double hx = (end_int1 - start_int1) / Nx;
@@ -60,13 +51,13 @@ namespace IntegralLeft
             double hz = (end_int3 - start_int3) / Nz;
 
             double temp_hx = start_int1;
-            for (int i = 0; i < Nx - 1; i++)
+            while (temp_hx <= end_int1 - hx)
             {
                 double temp_hy = start_int2;
-                for (int j = 0; j < Ny - 1; j++)
+                while (temp_hy <= end_int2 - hy)
                 {
                     double temp_hz = start_int3;
-                    for (int k = 0; k < Nz - 1; k++)
+                    while (temp_hz <= end_int3 - hz)
                     {
                         var expr = calc.ParseExpression(text_func, x => temp_hx, y => temp_hy, z => temp_hz);
                         var func = expr.Compile();

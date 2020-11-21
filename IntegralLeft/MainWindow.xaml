@@ -5,10 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IntegralLeft"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="754">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="304,97,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="131,195,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Name="textBox1"/>
-
+        <Grid HorizontalAlignment="Left" Height="399" Margin="10,11,0,0" VerticalAlignment="Top" Width="302" Background="#FFF3E9E9">
+            <ListBox HorizontalAlignment="Left" Height="81" Margin="12,0,0,166" VerticalAlignment="Bottom" Width="275" x:Name="ListBoxServer"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="106,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" x:Name="TextServerAddress" RenderTransformOrigin="0.385,2.899" TabIndex="0"/>
+            <Label Content="Адрес сервера" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <Button Content="Добавить" HorizontalAlignment="Left" Margin="12,87,0,0" VerticalAlignment="Top" Width="75" Name="AddServerListBox" Click="AddServerListBox_Click" TabIndex="2"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="106,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" Name="TextServerPort" TabIndex="1"/>
+            <Label Content="Порт сервера" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+            <Button Content="Вычислить" HorizontalAlignment="Left" Margin="12,369,0,0" VerticalAlignment="Top" Width="77" Click="Button_Click_1"/>
+            <Label Content="" HorizontalAlignment="Left" Margin="12,261,0,0" VerticalAlignment="Top" x:Name="resultLabel" RenderTransformOrigin="0.5,-0.423"/>
+            <Label Content="Значение интеграла распределенным решение:" HorizontalAlignment="Left" Margin="12,230,0,0" VerticalAlignment="Top"/>
+            <Label Content="Время вычисления (с.)" HorizontalAlignment="Left" Margin="12,287,0,0" VerticalAlignment="Top"/>
+            <Label Content="" HorizontalAlignment="Left" Margin="150,287,0,0" VerticalAlignment="Top" Name="ResultTimeNet"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="398" Margin="317,11,0,0" VerticalAlignment="Top" Width="419" Background="#FFC7B6B6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="24" Width="161" Content="Подинтегральная функция"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="213,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="196" Name="Integral" TabIndex="3"/>
+            <Label Content="Пределы интегрирования 1-го" HorizontalAlignment="Left" Margin="10,53,0,0" VerticalAlignment="Top" Height="26" Width="179"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="231,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" Name="S_i1" TabIndex="4"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="302,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="51" Name="E_i1" TabIndex="5"/>
+            <Label Content="Пределы интегрирования 2-го" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Height="26" Width="179"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="231,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" Name="S_i2" TabIndex="7"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="302,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="51" Name="E_i2" TabIndex="8"/>
+            <Label Content="Пределы интегрирования 3-го" HorizontalAlignment="Left" Margin="10,189,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.737,3.441" Width="179" Height="26"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="231,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" Name="S_i3" TabIndex="10"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="302,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="51" Name="E_i3" RenderTransformOrigin="0.544,3.018" TabIndex="11"/>
+            <Button Content="Вычислить" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top" Width="75" Name="SolutionOne" Click="SolutionOne_Click" RenderTransformOrigin="0.477,3.979" TabIndex="13" Height="20"/>
+            <Label Content="Количество шагов" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Height="26" Width="111"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="191,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Name="Ni" TabIndex="6"/>
+            <Label Content="Количество шагов" HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" Height="26" Width="111"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="191,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Name="Nj" TabIndex="9"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="191,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Name="Nk" TabIndex="12"/>
+            <Label Content="Количество шагов" HorizontalAlignment="Left" Margin="10,234,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.576,-0.811" Height="26" Width="111"/>
+            <Label Content="Результат расчета интеграла:" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" Height="26" Width="170"/>
+            <Label Content="Время вычисления (с.)" HorizontalAlignment="Left" Margin="10,323,0,0" VerticalAlignment="Top"/>
+            <Label Content="" HorizontalAlignment="Left" Margin="151,323,0,0" VerticalAlignment="Top" Name="ResultTime"/>
+            <Label Content="" HorizontalAlignment="Left" Margin="10,292,0,0" VerticalAlignment="Top" Name="Solution"/>
+        </Grid>
     </Grid>
 </Window>
